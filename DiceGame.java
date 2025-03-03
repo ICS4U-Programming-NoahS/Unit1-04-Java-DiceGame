@@ -67,26 +67,35 @@ final class DiceGame {
                 // Get the user's guess from the user as an int
                 userGuess = scanner.nextInt();
 
+                // Check if the user's guess is between 1 and 6 inclusive
                 if (userGuess <= MAXIMUM_VALUE && userGuess >= MINIMUM_VALUE) {
+                    // Check if the user's guess is correct
                     if (userGuess == randomInt) {
                         System.out.println(userGuess
                         + " is the correct answer.");
                         System.out.println("It took you " + guesses
-                        + " guesses to get the right answer.");
+                                + " guesses to get the right answer.");
+                    // If the user's guess is incorrect
                     } else {
+                        // Increment the number of guesses
                         guesses = guesses + 1;
+                        // Check if the user's guess is too high or too low
                         if (userGuess < randomInt) {
+                            // If the user's guess is too low
                             System.out.println("Your guess is incorrect.");
                             System.out.println("Guess higher next time.");
                         } else {
+                            // If the user's guess is too high
                             System.out.println("Your guess is incorrect.");
                             System.out.println("Guess lower next time.");
                         }
                     }
+                // If the user's guess is not between 1 and 6 inclusive
                 } else {
                     System.out.println(
                         "Please enter an integer between 1 and 6 inclusive.");
                 }
+            // If the user does not enter an integer
             } catch (Exception exception) {
                 // If the user does not enter an integer
                 System.out.println("Please enter an integer.");
@@ -96,6 +105,7 @@ final class DiceGame {
                 // to prevent potential infinite loop
                 scanner.nextLine();
             }
+        // Continue to ask the user for their guess if the guess is incorrect
         } while (userGuess != randomInt);
 
         // Closing Scanner
